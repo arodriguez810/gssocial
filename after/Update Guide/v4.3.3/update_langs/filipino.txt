@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `filipino` = 'Araw-araw' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `filipino` = 'Linggu-linggo' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `filipino` = 'Buwan-buwan' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `filipino` = 'Taon-taon' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `filipino` = 'Walang napili' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `filipino` = 'Piliin lahat' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `filipino` = 'Alisin sa pagkakapili ang Lahat' WHERE `lang_key` = 'deselect_all';

@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `japanese` = '毎日' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `japanese` = '毎週' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `japanese` = '毎月' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `japanese` = '毎年' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `japanese` = '何も選択されていません' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `japanese` = 'すべて選択' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `japanese` = 'すべての選択を解除' WHERE `lang_key` = 'deselect_all';

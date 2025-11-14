@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `russian` = 'Ежедневно' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `russian` = 'Еженедельно' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `russian` = 'Ежемесячно' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `russian` = 'Ежегодно' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `russian` = 'Ничего не выбрано' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `russian` = 'Выбрать все' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `russian` = 'Убрать выделение со всего' WHERE `lang_key` = 'deselect_all';

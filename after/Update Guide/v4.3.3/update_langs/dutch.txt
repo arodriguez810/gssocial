@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `dutch` = 'Dagelijks' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `dutch` = 'Wekelijks' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `dutch` = 'Maandelijks' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `dutch` = 'Jaarlijks' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `dutch` = 'Niets geselecteerd' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `dutch` = 'Selecteer alles' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `dutch` = 'Deselecteer alles' WHERE `lang_key` = 'deselect_all';

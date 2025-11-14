@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `hindi` = 'दैनिक' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `hindi` = 'साप्ताहिक' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `hindi` = 'महीने के' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `hindi` = 'सालाना' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `hindi` = 'कुछ भी चयनित नहीं' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `hindi` = 'सबका चयन करें' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `hindi` = 'सबको अचयनित करो' WHERE `lang_key` = 'deselect_all';

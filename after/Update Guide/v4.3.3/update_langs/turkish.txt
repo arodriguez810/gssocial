@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `turkish` = 'Günlük' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `turkish` = 'Haftalık' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `turkish` = 'Aylık' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `turkish` = 'Yıllık' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `turkish` = 'Hiçbir şey seçilmedi' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `turkish` = 'Hepsini seç' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `turkish` = 'Hiçbirini seçme' WHERE `lang_key` = 'deselect_all';

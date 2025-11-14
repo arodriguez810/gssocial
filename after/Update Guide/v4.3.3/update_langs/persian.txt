@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `persian` = 'روزانه' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `persian` = 'هفتگی' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `persian` = 'ماهانه' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `persian` = 'سالانه' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `persian` = 'چیزی انتخاب نشده است' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `persian` = 'انتخاب همه' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `persian` = 'همه را لغو انتخاب کنید' WHERE `lang_key` = 'deselect_all';

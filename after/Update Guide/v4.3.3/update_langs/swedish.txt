@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `swedish` = 'Dagligen' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `swedish` = 'Varje vecka' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `swedish` = 'En gång i månaden' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `swedish` = 'Årlig' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `swedish` = 'Inget valt' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `swedish` = 'Välj alla' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `swedish` = 'Avmarkera alla' WHERE `lang_key` = 'deselect_all';

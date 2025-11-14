@@ -1,0 +1,8 @@
+{
+    "sql_db_host": "localhost",
+    "sql_db_user": "arr",
+    "sql_db_pass": "abcd1234",
+    "sql_db_name": "gssocial",
+    "site_url": "http://socialgeneraldeseguros.com",
+    "purchase_code": "randomvalue"
+}

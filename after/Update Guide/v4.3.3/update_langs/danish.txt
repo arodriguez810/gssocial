@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `danish` = 'Daglige' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `danish` = 'Ugentlig' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `danish` = 'Månedlige' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `danish` = 'Årligt' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `danish` = 'Intet valgt' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `danish` = 'Vælg alle' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `danish` = 'Fravælg alle' WHERE `lang_key` = 'deselect_all';

@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `urdu` = 'روزانہ' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `urdu` = 'ہفتہ وار' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `urdu` = 'ماہانہ' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `urdu` = 'سالانہ' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `urdu` = 'کچھ بھی منتخب نہیں کیا گیا۔' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `urdu` = 'تمام منتخب کریں' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `urdu` = 'سبھی کو غیر منتخب کریں۔' WHERE `lang_key` = 'deselect_all';

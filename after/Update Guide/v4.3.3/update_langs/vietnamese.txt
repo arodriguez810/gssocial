@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `vietnamese` = 'Hằng ngày' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `vietnamese` = 'hàng tuần' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `vietnamese` = 'hàng tháng' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `vietnamese` = 'Hàng năm' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `vietnamese` = 'Không có gì được chọn' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `vietnamese` = 'Chọn tất cả' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `vietnamese` = 'Bỏ chọn tất cả' WHERE `lang_key` = 'deselect_all';

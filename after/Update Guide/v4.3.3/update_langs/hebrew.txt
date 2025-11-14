@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `hebrew` = 'יום יומי' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `hebrew` = 'שְׁבוּעִי' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `hebrew` = 'יַרחוֹן' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `hebrew` = 'שְׁנָתִי' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `hebrew` = 'שום דבר לא נבחר' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `hebrew` = 'בחר הכל' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `hebrew` = 'הסר סימון מהכל' WHERE `lang_key` = 'deselect_all';

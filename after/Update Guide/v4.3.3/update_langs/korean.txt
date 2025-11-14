@@ -1,0 +1,7 @@
+UPDATE `Wo_Langs` SET `korean` = '일일' WHERE `lang_key` = 'daily';
+UPDATE `Wo_Langs` SET `korean` = '주간' WHERE `lang_key` = 'weekly';
+UPDATE `Wo_Langs` SET `korean` = '월간 간행물' WHERE `lang_key` = 'monthly';
+UPDATE `Wo_Langs` SET `korean` = '매년' WHERE `lang_key` = 'yearly';
+UPDATE `Wo_Langs` SET `korean` = '선택한 항목이 없습니다.' WHERE `lang_key` = 'nothing_selected';
+UPDATE `Wo_Langs` SET `korean` = '모두 선택' WHERE `lang_key` = 'select_all';
+UPDATE `Wo_Langs` SET `korean` = '모두 선택 취소' WHERE `lang_key` = 'deselect_all';
