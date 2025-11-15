@@ -1,14 +1,7 @@
 <?php
-// +--------------------------------------\----------------------------------+
-// | @author Deen Doughouz (DoughouzForest)
-// | @author_url 1: http://www.wowonder.com
-// | @author_url 2: http://codecanyon.net/user/doughouzforest
-// | @author_email: wowondersocial@gmail.com
-// +------------------------------------------------------------------------+
-// | WoWonder - The Ultimate Social Networking Platform
-// | Copyright (c) 2017 WoWonder. All rights reserved.
-// +------------------------------------------------------------------------+
+
 require_once('assets/init.php');
+
 decryptConfigData();
 
 if (!empty($auto_redirect)) {
@@ -45,8 +38,8 @@ if ($wo['loggedin'] == true) {
 if (!empty($_GET)) {
     foreach ($_GET as $key => $value) {
         if (!is_array($value)) {
-            $value      = ($key != 'last_url') ? preg_replace('/on[^<>=]+=[^<>]*/m', '', $value) : $value;
-            $value      = preg_replace('/\((.*?)\)/m', '', $value);
+            $value = ($key != 'last_url') ? preg_replace('/on[^<>=]+=[^<>]*/m', '', $value) : $value;
+            $value = preg_replace('/\((.*?)\)/m', '', $value);
             $_GET[$key] = strip_tags($value);
         }
     }
@@ -54,7 +47,7 @@ if (!empty($_GET)) {
 if (!empty($_REQUEST)) {
     foreach ($_REQUEST as $key => $value) {
         if (!is_array($value)) {
-            $value          = preg_replace('/on[^<>=]+=[^<>]*/m', '', $value);
+            $value = preg_replace('/on[^<>=]+=[^<>]*/m', '', $value);
             $_REQUEST[$key] = strip_tags($value);
         }
     }
@@ -62,7 +55,7 @@ if (!empty($_REQUEST)) {
 if (!empty($_POST)) {
     foreach ($_POST as $key => $value) {
         if (!is_array($value)) {
-            $value       = preg_replace('/on[^<>=]+=[^<>]*/m', '', $value);
+            $value = preg_replace('/on[^<>=]+=[^<>]*/m', '', $value);
             $_POST[$key] = strip_tags($value);
         }
     }
@@ -70,7 +63,7 @@ if (!empty($_POST)) {
 if (!empty($_GET['ref']) && $wo['loggedin'] == false) {
     $_GET['ref'] = Wo_Secure($_GET['ref']);
     $ref_user_id = Wo_UserIdFromUsername($_GET['ref']);
-    $user_date   = Wo_UserData($ref_user_id);
+    $user_date = Wo_UserData($ref_user_id);
     if (!empty($user_date)) {
         $_SESSION['ref'] = $user_date['username'];
     }
@@ -91,9 +84,9 @@ if ((!isset($_GET['link1']) && $wo['loggedin'] == false) || (isset($_GET['link1'
     // }
 
     $landingPage = $wo['config']['directory_landing_page'];
-    if($landingPage == 'home') {
+    if ($landingPage == 'home') {
         //$page = 'welcome';
-    } else  {
+    } else {
         header("Location: " . Wo_SeoLink("index.php?link1=$landingPage"));
         exit();
     }
@@ -115,7 +108,7 @@ if ($wo['config']['maintenance_mode'] == 1) {
 }
 if (!empty($_GET['m'])) {
     $page = 'welcome';
-    setcookie('maintenance_access','1', time() + 31556926, '/');
+    setcookie('maintenance_access', '1', time() + 31556926, '/');
 }
 if ($page != 'admincp' && $page != 'admin-cp') {
     if ($wo["loggedin"] && !empty($wo['user']) && $wo['user']['is_pro'] && !empty($wo["pro_packages"][$wo['user']['pro_type']]) && !empty($wo["pro_packages"][$wo['user']['pro_type']]['max_upload'])) {
@@ -136,7 +129,7 @@ foreach ($all_langs as $key => $value) {
     if (!empty($wo['iso'][$value])) {
         $iso = $wo['iso'][$value]->iso;
     }
-    $wo['lang_og_meta'] .= '<link rel="alternate" href="'.$wo['config']['site_url'].'?lang='.$value.'" hreflang="'.$iso.'" />';
+    $wo['lang_og_meta'] .= '<link rel="alternate" href="' . $wo['config']['site_url'] . '?lang=' . $value . '" hreflang="' . $iso . '" />';
 }
 
 if ((!$wo['loggedin'] || ($wo['loggedin'] && $wo['user']['banned'] != 1))) {
