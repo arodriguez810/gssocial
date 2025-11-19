@@ -1,4 +1,15 @@
 <style>
+
+    @media (max-width: 768px) {
+        .hide-on-mobile {
+            display: none !important;
+        }
+    }
+    @media (min-width: 769px) {
+        .show-only-mobile {
+            display: none !important;
+        }
+    }
 @font-face {
     font-family: OpenSansLight;
     src: url("<?php echo $wo['config']['theme_url'];?>/fonts/OpenSansLight/OpenSansLight.woff") format("woff");

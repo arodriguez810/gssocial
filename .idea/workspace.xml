@@ -216,13 +216,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/angel/OneDrive/Documents/WAMP/gssocial/content/languages/locale/es_es",
+    "last_opened_file_path": "C:/Users/angel/OneDrive/Documents/WAMP/gssocial",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.fileTypes"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\angel\OneDrive\Documents\WAMP\gssocial" />
       <recent name="C:\Users\angel\OneDrive\Documents\WAMP\gssocial\content\languages\locale\es_es" />
       <recent name="C:\Users\angel\OneDrive\Documents\WAMP\gssocial\content\languages\locale\en_us" />
       <recent name="C:\Users\angel\OneDrive\Documents\WAMP\gssocial\content\languages\locale" />
@@ -243,6 +244,8 @@
       <workItem from="1762992545538" duration="2100000" />
       <workItem from="1762996869321" duration="8635000" />
       <workItem from="1763075013958" duration="31405000" />
+      <workItem from="1763178845463" duration="1308000" />
+      <workItem from="1763321545432" duration="3484000" />
     </task>
     <servers />
   </component>
