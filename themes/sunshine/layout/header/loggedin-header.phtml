@@ -158,8 +158,8 @@ if ($followers_alert == 0) {
         </a>
         <ul class="dropdown-menu ani-acc-menu" role="menu">
             <li>
-                <a id="update-username" href="<?php echo $wo['user']['url']; ?>"
-                   data-ajax="?link1=timeline&u=<?php echo $wo['user']['username']; ?>" class="wow_hdr_menu_usr_lnk">
+                <a id="update-username"
+                   class="wow_hdr_menu_usr_lnk">
                     <img src="<?php echo $wo['user']['avatar']; ?>"
                          alt="<?php echo $wo['user']['name']; ?> Profile Picture"> <?php echo $wo['user']['name']; ?>
                 </a>
@@ -630,7 +630,7 @@ if ($followers_alert == 0) {
                 </li><?php } ?>
 
 
-            <li>
+            <li style="display: none" class="manualhide">
                 <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=general-setting'); ?>"
                    data-ajax="?link1=setting&page=general-setting">
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -709,8 +709,6 @@ if ($followers_alert == 0) {
                     </svg> <?php echo $wo['lang']['keyboard_shortcuts']; ?>
                 </a>
             </li>
-
-
 
 
             <li>
