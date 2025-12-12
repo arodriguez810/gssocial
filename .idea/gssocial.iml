@@ -7,6 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/plugins" isTestSource="false" packagePrefix="Plugins\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/assets/libraries" isTestSource="false" packagePrefix="MineSQL" />
+      <sourceFolder url="file://$MODULE_DIR$/assets/libraries/SimpleImage-master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/assets/libraries/iyzipay/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/assets/libraries/social-login" isTestSource="false" packagePrefix="Hybridauth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hybridauth/hybridauth" />

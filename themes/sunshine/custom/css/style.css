@@ -1,5 +1,49 @@
-/* 
+.login_left_combo_parent {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
 
-Add here your custom css styles Example: p { text-align: center; color: red; } 
+.login_left_combo {
+    display: block;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 550px;
+    min-width: 53%;
+    flex-direction: column;
+    margin: auto;
+    overflow: hidden;
+    align-items: flex-start;
+}
 
-*/
+.login_left_combo p {
+    margin: 20px 0 50px;
+    max-width: 8000px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 39px;
+    text-transform: capitalize;
+}
+
+.login_signup_combo .login__ {
+    display: block;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.login form {
+    width: 100%;
+    max-width: 550px;
+    min-width: 50%;
+    margin: auto;
+    background: none;
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: none;
+}
