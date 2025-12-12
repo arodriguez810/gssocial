@@ -13,7 +13,8 @@
 			<div class="col-md-6">
 				<div class="wow_form_fields">
 					<label for="username"><?php echo $wo['lang']['username']; ?></label>
-					<input id="username" name="username" type="text" value="<?php echo $wo['setting']['username']?>" onkeyup="Wo_CheckUsername(this.value);" autocomplete="off">
+					<input id="username" name="username" type="hidden" value="<?php echo $wo['setting']['username']?>" onkeyup="Wo_CheckUsername(this.value);" autocomplete="off">
+					<input  disabled  type="text" value="<?php echo $wo['setting']['username']?>" onkeyup="Wo_CheckUsername(this.value);" autocomplete="off">
 					<span class="help-block checking"></span>
 				</div>
 			</div>

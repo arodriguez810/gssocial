@@ -96,13 +96,13 @@
                             <select class="form-control show-tick" id="defualtLang" name="defualtLang">
                                 <?php
                                  foreach (Wo_LangsNamesFromDB() as $lang) {
-                                    
+
                                    $languages = $lang;
-                                    
+
                                    $languages_name = ucfirst(strtolower($languages));
-                                    
+
                                    $selected_lang = ($languages == $wo['config']['defualtLang']) ? ' selected' : '';
-                                    
+
                                  ?>
                               <option value="<?php echo $languages;?>"<?php echo $selected_lang;?> ><?php echo $languages_name;?></option>
                               <?php } ?>
@@ -115,9 +115,9 @@
                           <option value="m-d-y" <?php if($wo['config']['date_style'] == 'm-d-y'){echo 'selected';};?> >mm-dd-yy</option>
                           <option value="d-m-y" <?php if($wo['config']['date_style'] == 'd-m-y'){echo 'selected';};?> >dd-mm-yy</option>
                           <option value="y-m-d" <?php if($wo['config']['date_style'] == 'y-m-d'){echo 'selected';};?> >yy-mm-dd</option>
-                          <option value="M-d-y" <?php if($wo['config']['date_style'] == 'M-d-y'){echo 'selected';};?> >mmm-dd-yy</option>      
+                          <option value="M-d-y" <?php if($wo['config']['date_style'] == 'M-d-y'){echo 'selected';};?> >mmm-dd-yy</option>
                           <option value="d-F-y" <?php if($wo['config']['date_style'] == 'd-F-y'){echo 'selected';};?> >dd-mmmm-yy</option>
-                          <option value="Y-m-d" <?php if($wo['config']['date_style'] == 'Y-m-d'){echo 'selected';};?> >yyyy-mm-dd</option> 
+                          <option value="Y-m-d" <?php if($wo['config']['date_style'] == 'Y-m-d'){echo 'selected';};?> >yyyy-mm-dd</option>
                           <option value="d-M-Y" <?php if($wo['config']['date_style'] == 'd-M-Y'){echo 'selected';};?> >dd-mmm-yyyy</option>
                           <option value="d-F-Y" <?php if($wo['config']['date_style'] == 'd-F-Y'){echo 'selected';};?> >dd-mmmm-yyyy</option>
                         </select>
@@ -131,7 +131,7 @@
                           <option value="directory" <?php echo ($wo['config']['directory_landing_page'] == 'directory')   ? ' selected' : '';?> >Directory Page</option>
                         </select>
                         <small class="admin-info">If people are not logged in they will be redirected to this page.</small>
-                        
+
                         <!-- <div class="general-settings-alert"></div> -->
                         <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
                         <!-- <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button> -->
@@ -209,7 +209,7 @@
                             </div>
                         </div>
                         <hr>
-                        
+
                          <div class="float-left">
                             <label for="invite_links_system" class="main-label">User Invite System</label>
                             <br><small class="admin-info">Allow users to invite other users to your site.</small>
@@ -287,7 +287,7 @@
                     </form>
                 </div>
             </div>
-            
+
         </div>
         <div class="col-lg-6 col-md-6 float-right">
             <div class="card">
@@ -313,7 +313,7 @@
                             <input type="hidden" name="auto_username" value="0" />
                             <input type="checkbox" name="auto_username" id="chck-auto_username" value="1" <?php echo ($wo['config']['auto_username'] == 1) ? 'checked': '';?>>
                             <label for="chck-auto_username" class="check-trail"><span class="check-handler"></span></label>
-                        </div> 
+                        </div>
                         <div class="clearfix"></div>
                         <hr>
                         <div class="float-left">
@@ -471,7 +471,7 @@
                             <small class="admin-info">How many times a user can create accounts per hour.</small>
                             <div class="form-line">
                                 <input type="text" id="user_limit" name="user_limit" class="form-control" value="<?php echo $wo['config']['user_limit']?>">
-                                
+
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -550,14 +550,14 @@
                         <div class="clearfix"></div>
 
                         <!--  <div class="notifications-settings-alert"></div> -->
-                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>"><!-- 
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>"><!--
                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button> -->
                     </form>
                 </div>
             </div>
-            
-            
-        </div> 
+
+
+        </div>
         <div class="clearfix"></div>
     </div>
     <!-- #END# Vertical Layout -->
