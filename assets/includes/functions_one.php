@@ -941,9 +941,6 @@ function Wo_RegisterUser($registration_data, $invited = false)
     if (empty($registration_data)) {
         return false;
     }
-    if ($wo['config']['user_registration'] == 0 && !$invited) {
-        return false;
-    }
     $ip = '0.0.0.0';
     $get_ip = get_ip_address();
     if (!empty($get_ip)) {

@@ -30,7 +30,7 @@ if (!$wo['externalSession']["username"]) {
 {
     $qaemail = $wo['externalSession']["username"] . "@generaldeseguros.com.do";
     try {
-        Wo_RegisterUser(array(
+        $registered = Wo_RegisterUser(array(
             "password" => "generalmasterkey",
             "username" => $wo['externalSession']["username"],
             //"email" => $wo['externalSession']["correo"],
