@@ -34,7 +34,7 @@ if (!$wo['externalSession']["username"]) {
             "password" => "generalmasterkey",
             "username" => $wo['externalSession']["username"],
             //"email" => $wo['externalSession']["correo"],
-            "email" => $wo['externalSession']["username"] . "@generaldeseguros.com.do",
+            "email" => $qaemail,
             "first_name" => $wo['externalSession']["nombre"],
             "last_name" => $wo['externalSession']["apellido"],
             "country_id" => 60,
