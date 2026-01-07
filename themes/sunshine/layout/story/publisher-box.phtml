@@ -8,6 +8,7 @@ if (!empty($_GET['url'])) {
   $url = urldecode($_REQUEST['url']);
 }
 ?>
+<?php if ($wo['config']['video_upload'] == 1) { ?>
 <form action="#" method="post" class="post publisher-box" id="publisher-box-focus">
 	<div class="panel post panel-shadow sun_pub_box">
 		<div id="post-textarea"  onclick="Wo_ShowPosInfo();">
@@ -673,6 +674,7 @@ if (!empty($_GET['url'])) {
    <?php } ?>
    <input type="hidden" name="postSticker" value="" id="postSticker" onchange="alert(this.value)">
 </form>
+<?php } ?>
 <div id="hidden_inputbox"></div>
 <?php echo Wo_LoadPage('products/create'); ?>
 <?php if ($wo['config']['ai_post_system'] == 1) { echo Wo_LoadPage('modals/ai_post');} ?>
