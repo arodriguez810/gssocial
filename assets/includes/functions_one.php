@@ -492,6 +492,7 @@ function Wo_IsBlocked($user_id)
     $query = mysqli_query($sqlConnect, "SELECT COUNT(`id`) FROM " . T_BLOCKS . " WHERE (`blocker` = {$logged_user_id} AND `blocked` = {$user_id}) OR (`blocker` = {$user_id} AND `blocked` = {$logged_user_id})");
     return (Wo_Sql_Result($query, 0) == 1) ? true : false;
 }
+
 function Wo_IsUserBlocked($blocker)
 {
     global $wo, $sqlConnect;
@@ -817,9 +818,9 @@ function Wo_UserData($user_id, $password = true)
     $fetched_data['formated_langs'] = array();
     $wo['switched_accounts'] = array();
     if (!empty($_COOKIE['switched_accounts'])) {
-        $switched_accounts = json_decode($_COOKIE['switched_accounts'],true);
+        $switched_accounts = json_decode($_COOKIE['switched_accounts'], true);
         foreach ($switched_accounts as $key => $value) {
-            $sessionExist =  $db->where('user_id', $value['user_id'])->where('session_id', $value['session'])->getValue(T_APP_SESSIONS, 'COUNT(*)');
+            $sessionExist = $db->where('user_id', $value['user_id'])->where('session_id', $value['session'])->getValue(T_APP_SESSIONS, 'COUNT(*)');
             if ($sessionExist > 0) {
                 $wo['switched_accounts'][] = $value;
             }
@@ -1548,21 +1549,21 @@ function Wo_AddRelatedUser($userData, $relatedUserId)
         return false;
     }
 
-    $relatedForUser = json_decode($userData['related_users'],true);
+    $relatedForUser = json_decode($userData['related_users'], true);
 
     if (count($relatedForUser) > 2) {
         return false;
     }
 
-    $filtered = array_filter($relatedForUser, function($userId) use ($relatedUserId) {
+    $filtered = array_filter($relatedForUser, function ($userId) use ($relatedUserId) {
         return $userId == $relatedUserId;
     });
 
-    if(count($filtered) > 0) {
+    if (count($filtered) > 0) {
         return false;
     }
 
-    $relatedForUser[] =  $relatedUserId;
+    $relatedForUser[] = $relatedUserId;
 
     $user_id = $userData['user_id'];
     $relatedForUser = json_encode($relatedForUser);
@@ -1721,7 +1722,8 @@ function Wo_UploadImage($file, $name, $type, $type_file, $user_id = 0, $placemen
                     $update_data = Wo_UpdateUserData($image_data['user_id'], $image_data);
                     if ($update_data) {
                         $last_file = $filename;
-                        $explode2 = @end(explode('.', $filename));
+                        $tempex = explode('.', $filename);
+                        $explode2 = @end($tempex);
                         $explode3 = @explode('.', $filename);
                         $last_file = $explode3[0] . '_full.' . $explode2;
                         @Wo_CompressImage($filename, $last_file, $wo['config']['images_quality']);
@@ -2411,8 +2413,7 @@ function Wo_RegisterFollow($following_id = 0, $followers_id = 0)
                     'activity_type' => 'following'
                 );
                 $add_activity = Wo_RegisterActivity($activity_data);
-            }
-            else{
+            } else {
                 $notification_data = array(
                     'recipient_id' => $following_id,
                     'notifier_id' => $follower_id,
@@ -5429,9 +5430,9 @@ function Wo_DisplaySharedFile($media, $placement = '', $cache = false, $is_video
         // if(isset($wo['story']['can_not_see_monetized']) && $wo['story']['can_not_see_monetized'] == true && !isset($wo['user'])) {
         //     $media_file .= "<a style='padding:10px;' class='btn btn-main image_blur_btn remover_blur_btn_" . $wo['story']['id'] . "' href='" . Wo_SeoLink('index.php?link1=welcome') ."'>" . $wo['lang']['subscribe'] . "</button>";
         // } else 
-        if(isset($wo['story']['can_not_see_monetized']) && $wo['story']['can_not_see_monetized'] == true && (!$wo['loggedin'] || ($wo['loggedin'] && $wo['story']['user_id'] !== $wo['user']['id']))) {
+        if (isset($wo['story']['can_not_see_monetized']) && $wo['story']['can_not_see_monetized'] == true && (!$wo['loggedin'] || ($wo['loggedin'] && $wo['story']['user_id'] !== $wo['user']['id']))) {
             $media_file .= "<img src='" . $wo['media']['filename'] . "' alt='image' class='image-file pointer'>";
-            $media_file .= "<div class='wo_media_monetize'><div class='wo_media_monetize_innr'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 495.787 495.787' xml:space='preserve' fill='currentColor'> <g> <g> <path d='M247.893,0C110.986,0,0,110.986,0,247.893s110.986,247.893,247.893,247.893s247.893-110.986,247.893-247.893 C495.669,111.034,384.752,0.118,247.893,0z M247.893,474.453L247.893,474.453c-125.126,0-226.56-101.434-226.56-226.56 s101.434-226.56,226.56-226.56c125.126,0,226.56,101.434,226.56,226.56C474.336,372.97,372.97,474.336,247.893,474.453z'></path> </g> </g> <g> <g> <path d='M320.853,212.48v-26.667c-2.181-40.354-36.663-71.298-77.016-69.117c-37.305,2.016-67.101,31.812-69.117,69.117v26.453 c-13.33,6.609-21.642,20.325-21.333,35.2v96.427c-0.237,21.206,16.762,38.59,37.969,38.827c0.286,0.003,0.572,0.003,0.858,0 h113.28c21.395-0.117,38.71-17.432,38.827-38.827v-96C344.222,232.477,335.013,218.579,320.853,212.48z M196.053,185.813 c0.117-28.547,23.293-51.627,51.84-51.627c28.547,0,51.723,23.08,51.84,51.627v22.827h-103.68V185.813z M304.853,361.387H191.36 c-9.661,0-17.493-7.832-17.493-17.493v-96c-0.239-9.423,7.206-17.255,16.629-17.493c0.288-0.007,0.576-0.007,0.864,0h113.28 c9.661,0,17.493,7.832,17.493,17.493l0.213,96C322.347,353.555,314.515,361.387,304.853,361.387z'></path> </g> </g> <g> <g> <path d='M247.893,264.32c-9.532,0.112-17.264,7.75-17.493,17.28c0.099,5.289,2.614,10.241,6.827,13.44v21.333 c0,5.891,4.776,10.667,10.667,10.667s10.667-4.776,10.667-10.667V295.04c4.378-3.178,6.99-8.244,7.04-13.653 C265.367,271.809,257.473,264.2,247.893,264.32z'></path> </g> </g> </svg>" . $wo['lang']['post_is_monetized'] . "<br><a class='btn btn-mat remover_blur_btn_" . $wo['story']['id'] . "' href='".Wo_SeoLink('index.php?link1=monetization&user='.$wo['story']['publisher']['username'])."'  data-ajax='?link1=monetization&user=".$wo['story']['publisher']['username']."'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path fill='currentColor' d='M880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720Zm-720 80h640v-80H160v80Zm0 160v240h640v-240H160Zm0 240v-480 480Z'></path></svg>" . $wo['lang']['subscribe'] . "</a></div></div>";
+            $media_file .= "<div class='wo_media_monetize'><div class='wo_media_monetize_innr'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 495.787 495.787' xml:space='preserve' fill='currentColor'> <g> <g> <path d='M247.893,0C110.986,0,0,110.986,0,247.893s110.986,247.893,247.893,247.893s247.893-110.986,247.893-247.893 C495.669,111.034,384.752,0.118,247.893,0z M247.893,474.453L247.893,474.453c-125.126,0-226.56-101.434-226.56-226.56 s101.434-226.56,226.56-226.56c125.126,0,226.56,101.434,226.56,226.56C474.336,372.97,372.97,474.336,247.893,474.453z'></path> </g> </g> <g> <g> <path d='M320.853,212.48v-26.667c-2.181-40.354-36.663-71.298-77.016-69.117c-37.305,2.016-67.101,31.812-69.117,69.117v26.453 c-13.33,6.609-21.642,20.325-21.333,35.2v96.427c-0.237,21.206,16.762,38.59,37.969,38.827c0.286,0.003,0.572,0.003,0.858,0 h113.28c21.395-0.117,38.71-17.432,38.827-38.827v-96C344.222,232.477,335.013,218.579,320.853,212.48z M196.053,185.813 c0.117-28.547,23.293-51.627,51.84-51.627c28.547,0,51.723,23.08,51.84,51.627v22.827h-103.68V185.813z M304.853,361.387H191.36 c-9.661,0-17.493-7.832-17.493-17.493v-96c-0.239-9.423,7.206-17.255,16.629-17.493c0.288-0.007,0.576-0.007,0.864,0h113.28 c9.661,0,17.493,7.832,17.493,17.493l0.213,96C322.347,353.555,314.515,361.387,304.853,361.387z'></path> </g> </g> <g> <g> <path d='M247.893,264.32c-9.532,0.112-17.264,7.75-17.493,17.28c0.099,5.289,2.614,10.241,6.827,13.44v21.333 c0,5.891,4.776,10.667,10.667,10.667s10.667-4.776,10.667-10.667V295.04c4.378-3.178,6.99-8.244,7.04-13.653 C265.367,271.809,257.473,264.2,247.893,264.32z'></path> </g> </g> </svg>" . $wo['lang']['post_is_monetized'] . "<br><a class='btn btn-mat remover_blur_btn_" . $wo['story']['id'] . "' href='" . Wo_SeoLink('index.php?link1=monetization&user=' . $wo['story']['publisher']['username']) . "'  data-ajax='?link1=monetization&user=" . $wo['story']['publisher']['username'] . "'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path fill='currentColor' d='M880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720Zm-720 80h640v-80H160v80Zm0 160v240h640v-240H160Zm0 240v-480 480Z'></path></svg>" . $wo['lang']['subscribe'] . "</a></div></div>";
             return $media_file;
         }
 
@@ -5473,7 +5474,7 @@ function Wo_DisplaySharedFile($media, $placement = '', $cache = false, $is_video
                         $db->where(" `id` NOT IN ({$con_list}) ");
                     }
                 }
-                    
+
                 $db->where(" `user_id` IN (SELECT `user_id` FROM `$t_users` WHERE `wallet` > 0) ");
                 $db->where("`status`", 1);
                 $db->where("`appears`", 'video');
@@ -5742,7 +5743,7 @@ function Wo_RegisterPost($re_data = array('recipient_id' => 0))
         if (preg_match("~\bfacebook\.com.*?\bv=(\d+)~", $re_data['postText'], $match)) {
             $is_there_video = true;
         }
-        if (preg_match('~https://www.facebook.com\/(.*)\/(.*)\/(?:t\.\d+/)?(\d+)~i', $re_data['postText'], $match) || preg_match('~https://fb.watch\/(.*)~', $re_data['postText'], $match) || preg_match('~(?:https://www.facebook.com\/watch\/\?v=)(.*)~', $re_data['postText'],$match) || preg_match('~(?:https://www.facebook.com\/watch\?v=)(.*)~', $re_data['postText'],$match)) {
+        if (preg_match('~https://www.facebook.com\/(.*)\/(.*)\/(?:t\.\d+/)?(\d+)~i', $re_data['postText'], $match) || preg_match('~https://fb.watch\/(.*)~', $re_data['postText'], $match) || preg_match('~(?:https://www.facebook.com\/watch\/\?v=)(.*)~', $re_data['postText'], $match) || preg_match('~(?:https://www.facebook.com\/watch\?v=)(.*)~', $re_data['postText'], $match)) {
             $link_regex = '/(http\:\/\/|https\:\/\/|www\.)([^\ ]+)/i';
             preg_match_all($link_regex, $re_data['postText'], $matches);
             if (!empty($matches) && !empty($matches[0]) && !empty($matches[0][0])) {
@@ -6373,18 +6374,18 @@ function Wo_PostData($post_id, $placement = '', $limited = '', $comments_limit =
     }
     $story['is_monetized_post'] = false;
     $story['can_not_see_monetized'] = 0;
-    if($story['postPrivacy'] == "6") {
+    if ($story['postPrivacy'] == "6") {
         $story['is_monetized_post'] = true;
         $can_see = false;
-        if(Wo_IsSubscriptionPaidForPublisher($story['publisher']['user_id'])) {
+        if (Wo_IsSubscriptionPaidForPublisher($story['publisher']['user_id'])) {
             $can_see = true;
         }
 
-        if(isset($wo['user']) && $story['publisher']['user_id'] == $wo['user']['user_id']) {
+        if (isset($wo['user']) && $story['publisher']['user_id'] == $wo['user']['user_id']) {
             $can_see = true;
         }
 
-        if(!$can_see) {
+        if (!$can_see) {
             $story['postYoutube'] = '';
             $story['postPlaytube'] = '';
             $story['postVimeo'] = '';
@@ -6411,71 +6412,73 @@ function Wo_PostData($post_id, $placement = '', $limited = '', $comments_limit =
             $new_target = $story['blur_url'];
 
             $subscribe_link = $wo['config']['site_url'] . "/monetization/" . $story['publisher']['name'];
-            if(!isset($wo['user'])) {
+            if (!isset($wo['user'])) {
                 $subscribe_link = $wo['config']['site_url'] . "/welcome";
             }
             if (!empty($story['postFile'])) {
                 $story['postFile'] = $new_target;
             }
-            
+
             if (empty($story['postFile'])) {
-                $story['postText'] = '<span class="wo_monetize_content"><span class="wo_monetize_content_innr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495.787 495.787" xml:space="preserve" fill="currentColor"> <g> <g> <path d="M247.893,0C110.986,0,0,110.986,0,247.893s110.986,247.893,247.893,247.893s247.893-110.986,247.893-247.893 C495.669,111.034,384.752,0.118,247.893,0z M247.893,474.453L247.893,474.453c-125.126,0-226.56-101.434-226.56-226.56 s101.434-226.56,226.56-226.56c125.126,0,226.56,101.434,226.56,226.56C474.336,372.97,372.97,474.336,247.893,474.453z"></path> </g> </g> <g> <g> <path d="M320.853,212.48v-26.667c-2.181-40.354-36.663-71.298-77.016-69.117c-37.305,2.016-67.101,31.812-69.117,69.117v26.453 c-13.33,6.609-21.642,20.325-21.333,35.2v96.427c-0.237,21.206,16.762,38.59,37.969,38.827c0.286,0.003,0.572,0.003,0.858,0 h113.28c21.395-0.117,38.71-17.432,38.827-38.827v-96C344.222,232.477,335.013,218.579,320.853,212.48z M196.053,185.813 c0.117-28.547,23.293-51.627,51.84-51.627c28.547,0,51.723,23.08,51.84,51.627v22.827h-103.68V185.813z M304.853,361.387H191.36 c-9.661,0-17.493-7.832-17.493-17.493v-96c-0.239-9.423,7.206-17.255,16.629-17.493c0.288-0.007,0.576-0.007,0.864,0h113.28 c9.661,0,17.493,7.832,17.493,17.493l0.213,96C322.347,353.555,314.515,361.387,304.853,361.387z"></path> </g> </g> <g> <g> <path d="M247.893,264.32c-9.532,0.112-17.264,7.75-17.493,17.28c0.099,5.289,2.614,10.241,6.827,13.44v21.333 c0,5.891,4.776,10.667,10.667,10.667s10.667-4.776,10.667-10.667V295.04c4.378-3.178,6.99-8.244,7.04-13.653 C265.367,271.809,257.473,264.2,247.893,264.32z"></path> </g> </g> </svg>'.$wo['lang']['post_is_monetized'];
+                $story['postText'] = '<span class="wo_monetize_content"><span class="wo_monetize_content_innr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495.787 495.787" xml:space="preserve" fill="currentColor"> <g> <g> <path d="M247.893,0C110.986,0,0,110.986,0,247.893s110.986,247.893,247.893,247.893s247.893-110.986,247.893-247.893 C495.669,111.034,384.752,0.118,247.893,0z M247.893,474.453L247.893,474.453c-125.126,0-226.56-101.434-226.56-226.56 s101.434-226.56,226.56-226.56c125.126,0,226.56,101.434,226.56,226.56C474.336,372.97,372.97,474.336,247.893,474.453z"></path> </g> </g> <g> <g> <path d="M320.853,212.48v-26.667c-2.181-40.354-36.663-71.298-77.016-69.117c-37.305,2.016-67.101,31.812-69.117,69.117v26.453 c-13.33,6.609-21.642,20.325-21.333,35.2v96.427c-0.237,21.206,16.762,38.59,37.969,38.827c0.286,0.003,0.572,0.003,0.858,0 h113.28c21.395-0.117,38.71-17.432,38.827-38.827v-96C344.222,232.477,335.013,218.579,320.853,212.48z M196.053,185.813 c0.117-28.547,23.293-51.627,51.84-51.627c28.547,0,51.723,23.08,51.84,51.627v22.827h-103.68V185.813z M304.853,361.387H191.36 c-9.661,0-17.493-7.832-17.493-17.493v-96c-0.239-9.423,7.206-17.255,16.629-17.493c0.288-0.007,0.576-0.007,0.864,0h113.28 c9.661,0,17.493,7.832,17.493,17.493l0.213,96C322.347,353.555,314.515,361.387,304.853,361.387z"></path> </g> </g> <g> <g> <path d="M247.893,264.32c-9.532,0.112-17.264,7.75-17.493,17.28c0.099,5.289,2.614,10.241,6.827,13.44v21.333 c0,5.891,4.776,10.667,10.667,10.667s10.667-4.776,10.667-10.667V295.04c4.378-3.178,6.99-8.244,7.04-13.653 C265.367,271.809,257.473,264.2,247.893,264.32z"></path> </g> </g> </svg>' . $wo['lang']['post_is_monetized'];
                 //if($new_target) {
-                    $story['postText'] .= '<br><a class="btn btn-main btn-mat" href="'.Wo_SeoLink('index.php?link1=monetization&user='.$story['publisher']['username']).'"  data-ajax="?link1=monetization&user='.$story['publisher']['username'].'"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path fill="currentColor" d="M880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720Zm-720 80h640v-80H160v80Zm0 160v240h640v-240H160Zm0 240v-480 480Z"></path></svg> '.$wo['lang']['subscribe'].'</a>';
+                $story['postText'] .= '<br><a class="btn btn-main btn-mat" href="' . Wo_SeoLink('index.php?link1=monetization&user=' . $story['publisher']['username']) . '"  data-ajax="?link1=monetization&user=' . $story['publisher']['username'] . '"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path fill="currentColor" d="M880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720Zm-720 80h640v-80H160v80Zm0 160v240h640v-240H160Zm0 240v-480 480Z"></path></svg> ' . $wo['lang']['subscribe'] . '</a>';
                 //}
                 $story['postText'] .= '</span>';
                 $story['postText'] .= '</span>';
             }
-                
+
             $story['postFile_full'] = $new_target;
             $story['can_not_see_monetized'] = 1;
         }
-        }
+    }
 
     return $story;
 }
 
-function Wo_IsSubscriptionPaidForPublisher($publisher_id) {
+function Wo_IsSubscriptionPaidForPublisher($publisher_id)
+{
     global $wo, $sqlConnect, $db;
     if ($wo['loggedin'] == false) {
         return false;
     }
 
-    $user_subscriptions = $db->where('user_id',$wo['user']['user_id'])
-        ->where('status',1)
+    $user_subscriptions = $db->where('user_id', $wo['user']['user_id'])
+        ->where('status', 1)
         ->get(T_MONETIZATION_SUBSCRIBTION);
 
     foreach ($user_subscriptions as $user_subscription) {
-        $monetization = $db->where('id',$user_subscription->monetization_id)
-            ->where('status',1)
+        $monetization = $db->where('id', $user_subscription->monetization_id)
+            ->where('status', 1)
             ->where('user_id', $publisher_id)
             ->getOne(T_USER_MONETIZATION);
 
-        if($monetization) {
+        if ($monetization) {
             $lastPaymentTimestamp = strtotime($user_subscription->last_payment_date);
             $nextPaymentTimestamp = $lastPaymentTimestamp + ($monetization->paid_every * 24 * 60 * 60);
-            if(time() <= $nextPaymentTimestamp) {
+            if (time() <= $nextPaymentTimestamp) {
                 return true;
             }
         }
-}
+    }
 }
 
-function Wo_ShouldSubscriptionBePaid($monetization_id, $last_payment_date) {
+function Wo_ShouldSubscriptionBePaid($monetization_id, $last_payment_date)
+{
     global $db;
-        $shouldBePaid = false;
-        $monetization = $db->where('id',$monetization_id)
-            ->where('status',1)
-            ->getOne(T_USER_MONETIZATION);
+    $shouldBePaid = false;
+    $monetization = $db->where('id', $monetization_id)
+        ->where('status', 1)
+        ->getOne(T_USER_MONETIZATION);
 
-        if($monetization) {
-            $lastPaymentTimestamp = strtotime($last_payment_date);
-            $nextPaymentTimestamp = $lastPaymentTimestamp + ($monetization->paid_every * $monetization->multiplier * 24 * 60 * 60);
-            if(time() > $nextPaymentTimestamp) {
-                $shouldBePaid = true;
+    if ($monetization) {
+        $lastPaymentTimestamp = strtotime($last_payment_date);
+        $nextPaymentTimestamp = $lastPaymentTimestamp + ($monetization->paid_every * $monetization->multiplier * 24 * 60 * 60);
+        if (time() > $nextPaymentTimestamp) {
+            $shouldBePaid = true;
         }
     }
-        return $shouldBePaid;
+    return $shouldBePaid;
 }
 
 
@@ -6818,11 +6821,11 @@ function Wo_GetPosts($data = array('filter_by' => 'all', 'after_post_id' => 0, '
         }
     }
 
-    if(!isset($data['is_reel']) || $data['is_reel'] == 'disable') {
+    if (!isset($data['is_reel']) || $data['is_reel'] == 'disable') {
         $query_text .= " AND `is_reel` = 0 ";
     }
 
-    if(isset($data['is_reel']) && $data['is_reel'] == 'only') {
+    if (isset($data['is_reel']) && $data['is_reel'] == 'only') {
         $query_text .= " AND `is_reel` = 1 ";
     }
     if (!empty($data['not_in']) && is_array($data['not_in'])) {
@@ -6839,7 +6842,7 @@ function Wo_GetPosts($data = array('filter_by' => 'all', 'after_post_id' => 0, '
         }
     }
     $user = ($wo['loggedin']) ? $wo['user']['id'] : 0;
-        if ((!isset($data['publisher_id']) || $data['publisher_id'] == $user) && empty($Wo_page_publisher['page_id']) && empty($Wo_group_publisher['id'])) {
+    if ((!isset($data['publisher_id']) || $data['publisher_id'] == $user) && empty($Wo_page_publisher['page_id']) && empty($Wo_group_publisher['id'])) {
         if ($user !== 0) {
             $query_text .= " AND `shared_from` <>  {$user}";
         }
@@ -6922,8 +6925,7 @@ function Wo_GetPosts($data = array('filter_by' => 'all', 'after_post_id' => 0, '
                         if (ifVideoPost($post['postFile'])) {
                             $data[] = $post;
                         }
-                    }
-                    else{
+                    } else {
                         $data[] = $post;
                     }
                 }
@@ -6955,7 +6957,7 @@ function Wo_GetPosts($data = array('filter_by' => 'all', 'after_post_id' => 0, '
     return $data;
 }
 
-function ifVideoPost($postFile='')
+function ifVideoPost($postFile = '')
 {
     if (empty($postFile)) {
         return false;
@@ -11596,19 +11598,20 @@ function payUsingAamarpay($amount, $name, $email, $phone)
     return $base_url;
 }
 
-function Wo_SubscriptionPay($monetization_id)  {
+function Wo_SubscriptionPay($monetization_id)
+{
     global $wo, $sqlConnect, $cache, $db;
 
-    $data     = array(
+    $data = array(
         'status' => 400
     );
-    $monetization_id  = (!empty($monetization_id)) && is_numeric($monetization_id) ? $monetization_id : 0;
+    $monetization_id = (!empty($monetization_id)) && is_numeric($monetization_id) ? $monetization_id : 0;
     $monetization = $db->where('id', Wo_Secure($monetization_id))->getOne(T_USER_MONETIZATION);
 
-    $currency        = $monetization->currency;
+    $currency = $monetization->currency;
     $commission_percentage = $wo['config']['monetization_commission_percentage'];
     $user_id = $monetization->user_id;
-    $amount   = $monetization->price;
+    $amount = $monetization->price;
     $divide = 1;
     if (!empty($wo['config']['exchange']) && in_array($wo['currencies'][$monetization->currency]['text'], $wo['config']['exchange'])) {
         $divide = $wo['config']['exchange'][$wo['currencies'][$monetization->currency]['text']];
@@ -11618,31 +11621,31 @@ function Wo_SubscriptionPay($monetization_id)  {
     $admin_commission = $amount * $commission_percentage / 100;
     $amount_to_be_sent = $amount - $admin_commission;
     $userdata = Wo_UserData($user_id);
-    $wallet   = $wo['user']['wallet'];
+    $wallet = $wo['user']['wallet'];
 
-    if ($user_id ==  $wo['user']['id']) {
+    if ($user_id == $wo['user']['id']) {
         $data['message'] = $wo['lang']['please_check_details'];
     }
     if (empty($user_id) || empty($amount) || empty($userdata)) {
         $data['message'] = $wo['lang']['please_check_details'];
         return $data;
     } else if ($wallet < $amount) {
-        $link = '<a href="'.Wo_SeoLink('index.php?link1=wallet').'" data-ajax="?link1=wallet">'.$wo['lang']['top_up'].'</a>';
+        $link = '<a href="' . Wo_SeoLink('index.php?link1=wallet') . '" data-ajax="?link1=wallet">' . $wo['lang']['top_up'] . '</a>';
         $data['message'] = str_replace('{topup}', $link, $wo['lang']['no_money_for_subscriptions']);
         return $data;
     } else {
-        $amount          = ($amount <= $wallet) ? $amount : $wallet;
-        $up_data1        = array(
+        $amount = ($amount <= $wallet) ? $amount : $wallet;
+        $up_data1 = array(
             'balance' => sprintf('%.2f', $userdata['balance'] + $amount_to_be_sent)
         );
-        $up_data2        = array(
+        $up_data2 = array(
             'wallet' => sprintf('%.2f', $wallet - $amount)
         );
-        $recipient_name  = $userdata['username'];
-        $success_msg     = str_replace('{text}', $recipient_name, $wo['lang']['subscribed_successfully']);;
-        $notif_msg       = $wo['lang']['sent_you'];
-        $notif_msg_for_sub       = $wo['lang']['subscribed_to_you'];
-        $data['status']  = 200;
+        $recipient_name = $userdata['username'];
+        $success_msg = str_replace('{text}', $recipient_name, $wo['lang']['subscribed_successfully']);;
+        $notif_msg = $wo['lang']['sent_you'];
+        $notif_msg_for_sub = $wo['lang']['subscribed_to_you'];
+        $data['status'] = 200;
         $data['message'] = "$success_msg";
         $data['redirect_after_subscription'] = $userdata['url'];
         $extra = [
@@ -11652,9 +11655,9 @@ function Wo_SubscriptionPay($monetization_id)  {
         ];
         $extra = json_encode($extra);
         //$note1           = str_replace('{text}', $recipient_name, $wo['lang']['subscribed_to']);
-        $note1           = $userdata['name'];
+        $note1 = $userdata['name'];
         //$note2           = str_replace('{text}', $wo['user']['username'], $wo['lang']['subscription_earnings']);
-        $note2           = $wo['user']['name'];
+        $note2 = $wo['user']['name'];
         $db->where('user_id', $user_id)->update(T_USERS, $up_data1);
 
         mysqli_query($sqlConnect, "INSERT INTO " . T_PAYMENT_TRANSACTIONS . " (`userid`, `kind`, `amount`, `notes`, `admin_commission`, `extra`) VALUES ({$user_id}, 'RECEIVED', {$amount_to_be_sent}, '{$note2}', '{$admin_commission}', '{$extra}')");
@@ -11678,7 +11681,7 @@ function Wo_SubscriptionPay($monetization_id)  {
 
         $expire = time() + (60 * 60 * 24 * $monetization->paid_every);
 
-        if(!$monetizationSubscription) {
+        if (!$monetizationSubscription) {
             $db->insert(T_MONETIZATION_SUBSCRIBTION, array(
                 'user_id' => $wo['user']['user_id'],
                 'monetization_id' => $monetization->id,
@@ -11712,7 +11715,7 @@ function Wo_SubscriptionPay($monetization_id)  {
 
 function createCashfreeOrder($data = [])
 {
-    global $wo, $sqlConnect,$db,$lang_array;
+    global $wo, $sqlConnect, $db, $lang_array;
 
     $customer_id = "customer" . uniqid();
 
@@ -11756,21 +11759,19 @@ function createCashfreeOrder($data = [])
         throw new Exception(curl_error($ch));
     }
     curl_close($ch);
-    $result = json_decode($result,true);
+    $result = json_decode($result, true);
     if (!empty($result['payment_session_id'])) {
         return $result['payment_session_id'];
-    }
-    elseif (!empty($result['message'])) {
+    } elseif (!empty($result['message'])) {
         throw new Exception($result['message']);
-    }
-    else{
+    } else {
         throw new Exception($lang_array['error_msg']);
     }
 }
 
 function payCashfreeOrder($data = [])
 {
-    global $wo, $sqlConnect,$db,$lang_array;
+    global $wo, $sqlConnect, $db, $lang_array;
 
     $card = array(
         'channel' => 'link',
@@ -11814,21 +11815,19 @@ function payCashfreeOrder($data = [])
         throw new Exception(curl_error($ch));
     }
     curl_close($ch);
-    $result = json_decode($result,true);
+    $result = json_decode($result, true);
     if (!empty($result['data']) && !empty($result['data']['url'])) {
         return $result['data']['url'];
-    }
-    elseif (!empty($result['message'])) {
+    } elseif (!empty($result['message'])) {
         throw new Exception($result['message']);
-    }
-    else{
+    } else {
         throw new Exception($lang_array['error_msg']);
     }
 }
 
 function getCashfreeOrder($order_id = '')
 {
-    global $wo, $sqlConnect,$db,$lang_array;
+    global $wo, $sqlConnect, $db, $lang_array;
 
     $ch = curl_init();
 
@@ -11854,21 +11853,19 @@ function getCashfreeOrder($order_id = '')
         throw new Exception(curl_error($ch));
     }
     curl_close($ch);
-    $result = json_decode($result,true);
+    $result = json_decode($result, true);
     if (!empty($result['order_status']) && $result['order_status'] == 'PAID' && !empty($result['order_amount'])) {
         return $result['order_amount'];
-    }
-    elseif (!empty($result['message'])) {
+    } elseif (!empty($result['message'])) {
         throw new Exception($result['message']);
-    }
-    else{
+    } else {
         throw new Exception($lang_array['error_msg']);
     }
 }
 
 function cleanConfigData()
 {
-    global $wo, $sqlConnect,$db,$lang_array;
+    global $wo, $sqlConnect, $db, $lang_array;
 
     foreach ($wo['encryptedKeys'] as $key => $value) {
         if (in_array($value, array_keys($wo['config']))) {
@@ -11879,10 +11876,10 @@ function cleanConfigData()
 
 function decryptConfigData()
 {
-    global $wo, $sqlConnect,$db,$siteEncryptKey;
+    global $wo, $sqlConnect, $db, $siteEncryptKey;
 
     foreach ($wo['encryptedKeys'] as $key => $value) {
-        if (in_array($value, array_keys($wo['config'])) && strpos($wo['config'][$value],'$Ap1_') !== false) {
+        if (in_array($value, array_keys($wo['config'])) && strpos($wo['config'][$value], '$Ap1_') !== false) {
             $tx = str_replace('$Ap1_', '', $wo['config'][$value]);
             $wo['config'][$value] = openssl_decrypt($tx, "AES-128-ECB", $siteEncryptKey);
         }
