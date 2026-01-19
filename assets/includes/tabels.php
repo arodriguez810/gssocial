@@ -8,13 +8,14 @@
 // | WoWonder - The Ultimate Social Networking Platform
 // | Copyright (c) 2022 WoWonder. All rights reserved.
 // +------------------------------------------------------------------------+
-define('T_USERS','Wo_Users');
+define('T_USERS', 'Wo_Users');
 define('T_COUNTRIES', 'Wo_Countries');
 define('T_FOLLOWERS', 'Wo_Followers');
 define('T_NOTIFICATION', 'Wo_Notifications');
 define('T_MESSAGES', 'Wo_Messages');
 define('T_BLOCKS', 'Wo_Blocks');
-define('T_POSTS', 'Wo_Posts');
+define('T_POSTS', 'Wo_Posts2');
+define('V_POSTS', 'Wo_Posts2');
 define('T_PINNED_POSTS', 'Wo_PinnedPosts');
 define('T_LIKES', 'Wo_Likes');
 define('T_SAVED_POSTS', 'Wo_SavedPosts');

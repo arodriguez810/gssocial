@@ -446,7 +446,7 @@ function Wo_GetAllPosts($posts = array("limit" => 10, "after_user_id" => 0)) {
     $limit    = Wo_Secure($posts["limit"]);
     if (isset($posts["after_post_id"]) && !empty($posts["after_post_id"]) && $posts["after_post_id"] > 0) {
         $after_post_id = Wo_Secure($posts["after_post_id"]);
-        $subquery      = " WHERE `id` < {$after_post_id}";
+        $subquery      = " WHERE `id` < {$after_post_id} and postType!='profile_picture'";
     }
     $query_one = " SELECT `id` FROM " . T_POSTS . " {$subquery} ORDER BY `id` DESC LIMIT {$limit}";
     $sql       = mysqli_query($sqlConnect, $query_one);

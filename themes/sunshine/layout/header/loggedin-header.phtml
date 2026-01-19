@@ -158,7 +158,8 @@ if ($followers_alert == 0) {
         </a>
         <ul class="dropdown-menu ani-acc-menu" role="menu">
             <li>
-                <a id="update-username"
+                <a id="update-username" href="<?php echo $wo['user']['url']; ?>"
+                   data-ajax="?link1=timeline&u=<?php echo $wo['user']['username']; ?>"
                    class="wow_hdr_menu_usr_lnk">
                     <img src="<?php echo $wo['user']['avatar']; ?>"
                          alt="<?php echo $wo['user']['name']; ?> Profile Picture"> <?php echo $wo['user']['name']; ?>
