@@ -1633,6 +1633,9 @@ function Wo_GetMedia($media)
 
 function Wo_UploadImage($file, $name, $type, $type_file, $user_id = 0, $placement = '', $ai_post = 0)
 {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     global $wo, $sqlConnect;
     if ($wo['loggedin'] == false) {
         return false;
