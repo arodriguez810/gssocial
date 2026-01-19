@@ -281,11 +281,22 @@
       <workItem from="1767971406956" duration="29000" />
       <workItem from="1768578347063" duration="1996000" />
       <workItem from="1768596176017" duration="924000" />
-      <workItem from="1768829938119" duration="1505000" />
+      <workItem from="1768829938119" duration="3124000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/themes/sunshine/layout/timeline/profile-completion.phtml</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

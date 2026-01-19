@@ -134,12 +134,7 @@ if ($wo['loggedin'] && $IsOwnerUser) {
 </svg>
 									<input type="file" name="avatar" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileAvatar();">
 								</span>
-								<?php if ($wo['config']['ai_user_system'] == 1) { ?>
-								<span class="btn btn-upload-image btn-file" onclick="openAiUserModel()">
-									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" width="512" height="512"> <g> <g> <g> <g> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="256" y1="40" x2="256" y2="75.131"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="375.726" y1="20" x2="375.726" y2="75.131"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="136.274" y1="20" x2="136.274" y2="75.131"/> </g> <g> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="256" y1="436.869" x2="256" y2="472"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="375.726" y1="436.869" x2="375.726" y2="492"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="136.274" y1="436.869" x2="136.274" y2="492"/> </g> </g> <g> <g> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="472" y1="256" x2="436.869" y2="256"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="492" y1="136.274" x2="436.869" y2="136.274"/> </g> <g> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="75.131" y1="256" x2="40" y2="256"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="75.131" y1="375.726" x2="20" y2="375.726"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="75.131" y1="136.274" x2="20" y2="136.274"/> </g> </g> </g> <g> <g> <path style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;&#9;&#9;M166.625,329.73l55.371-145.383c1.132-2.766,5.047-2.77,6.184-0.006l54.868,145.389"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="183.893" y1="293.522" x2="266.058" y2="293.522"/> </g> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="345.375" y1="243.835" x2="345.375" y2="329.73"/> <line style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="345.375" y1="184.861" x2="345.375" y2="184.861"/> </g> <path style="fill:none;stroke:currentColor;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M433.989,275.726V138.011c0-33.137-26.863-60-60-60H138.011c-33.137,0-60,26.863-60,60v235.977c0,33.137,26.863,60,60,60h235.977&#10;&#9;&#9;c32.556,0,59.056-25.929,59.975-58.263l58.036,0"/> </g> </svg>
-								</span>
-				   				<input type="hidden" name="ai_post" value="off" id="isAiAvatar">
-								<?php } ?>
+
 								<?php if ($wo['user_profile']['avatar_org'] != $wo['userDefaultAvatar'] && $wo['user_profile']['avatar_org'] != $wo['userDefaultFAvatar']) {?>
 									<span class="btn btn-upload-image btn-file" onclick="OpenCropModal()">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -203,28 +198,8 @@ if ($wo['loggedin'] && $IsOwnerUser) {
 	                        </span>
                         <?php } ?>
 						<?php if($IsOwnerUser === true) { ?>
-							<span class="btn-glossy">
-								<a class="btn btn-default" href="<?php echo Wo_SeoLink('index.php?link1=setting&user=' . $wo['user_profile']['username'] . '&page=general-setting') ?>" data-ajax="?link1=setting&user=<?php echo $wo['user_profile']['username'] . '&page=general-setting'; ?>">
-									<svg class="feather" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.35288 6.95043C2.00437 4.17301 4.17301 2.00437 6.95043 1.35288C8.95626 0.882375 11.0437 0.882374 13.0496 1.35288C15.827 2.00437 17.9956 4.17301 18.6471 6.95044C19.1176 8.95626 19.1176 11.0437 18.6471 13.0496C17.9956 15.827 15.827 17.9956 13.0496 18.6471C11.0437 19.1176 8.95626 19.1176 6.95044 18.6471C4.17301 17.9956 2.00437 15.827 1.35288 13.0496C0.882374 11.0437 0.882374 8.95626 1.35288 6.95043Z" class="icon_main" stroke-width="1.5"/>
-<path d="M1.35288 6.95043C0.882374 8.95625 0.882374 11.0437 1.35288 13.0496C2.00437 15.827 4.17301 17.9956 6.95043 18.6471C8.95626 19.1176 11.0437 19.1176 13.0496 18.6471C15.827 17.9956 17.9956 15.827 18.6471 13.0496C19.1176 11.0437 19.1176 8.95625 18.6471 6.95043C17.9956 4.17301 15.827 2.00437 13.0496 1.35287" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M13 9.42406C11.788 9.82807 10.1719 8.21203 10.5759 7M11.0739 6.50204L8.46269 9.11325C7.32749 10.2485 6.52215 11.6708 6.13278 13.2283L6.00661 13.733C5.96729 13.8903 6.10973 14.0327 6.26699 13.9934L6.77168 13.8672C8.32916 13.4779 9.75154 12.6725 10.8867 11.5373L13.498 8.9261C13.8194 8.60465 14 8.16867 14 7.71407C14 6.76741 13.2326 6 12.2859 6C11.8313 6 11.3954 6.18059 11.0739 6.50204Z" class="icon_main" stroke-width="1.5"/>
-</svg>
 
-									<?php echo $wo['lang']['edit'];?>
-								</a>
-							</span>
-							<span class="btn-glossy">
-								<a class="btn btn-default" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=activities');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username'] . '&type=activities'; ?>">
-									<svg class="feather" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.35288 6.95043C2.00437 4.17301 4.17301 2.00437 6.95043 1.35287C8.95625 0.882372 11.0437 0.882372 13.0496 1.35287C15.827 2.00437 17.9956 4.17301 18.6471 6.95043C19.1176 8.95625 19.1176 11.0437 18.6471 13.0496C17.9956 15.827 15.827 17.9956 13.0496 18.6471C11.0437 19.1176 8.95626 19.1176 6.95044 18.6471C4.17301 17.9956 2.00437 15.827 1.35288 13.0496C0.882374 11.0437 0.882374 8.95626 1.35288 6.95043Z" class="icon_main" stroke-width="1.5"/>
-<path d="M1.35288 6.95043C0.882374 8.95625 0.882374 11.0437 1.35288 13.0496C2.00437 15.827 4.17301 17.9956 6.95044 18.6471C8.95626 19.1176 11.0437 19.1176 13.0496 18.6471C15.827 17.9956 17.9956 15.827 18.6471 13.0496C19.1176 11.0437 19.1176 8.95625 18.6471 6.95043C17.9956 4.17301 15.827 2.00437 13.0496 1.35287" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M5.31836 7.39934L6.35863 8.43962L8.43918 6.35907M11.0399 7.91948L14.6808 7.91948M5.31836 12.6007L6.35863 13.641L8.43918 11.5604M11.0399 13.1208L14.6808 13.1208" class="icon_main" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
 
-									<?php echo $wo['lang']['activities'];?>
-								</a>
-							</span>
 							<?php if ($wo['config']['website_mode'] == 'linkedin') { ?>
 								<div class="dropdown btn-glossy wo_job_open_gloss_btn">
 									<button class="btn btn-default dropdown-toggle" type="button" id="opento-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -430,28 +405,9 @@ if ($wo['loggedin'] && $IsOwnerUser) {
 						</a>
 					</li>
 					<?php if ($wo['config']['video_upload'] == 1) { ?>
-                    <li>
-						<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=videos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=videos">
-                            <span class="split-link"><svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7 4H3" class="icon_main" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M7 12L4 12" class="icon_main" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M5 8H1" class="icon_main" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M18 8.75C18.4142 8.75 18.75 8.41421 18.75 8C18.75 7.58579 18.4142 7.25 18 7.25V8.75ZM13 8.75H18V7.25H13V8.75Z" class="icon_main_fill"/>
-<path d="M21.5392 5.64505L12.8369 1.288C10.7427 0.23952 8.41866 2.22704 9.13127 4.45698L10.1705 7.70896C10.2339 7.90733 10.2338 8.12053 10.1702 8.31882L9.13677 11.5403C8.42185 13.7689 10.7426 15.7589 12.8379 14.7138L21.5356 10.3756C23.4865 9.40256 23.4886 6.62109 21.5392 5.64505Z" stroke="currentColor" stroke-width="1.5"/>
-</svg>
-</span>
-							<span><?php echo $wo['lang']['videos'];?></span>
-						</a>
-					</li>
+
 					<?php } ?>
-					<?php if($wo['config']['reels_upload']) {?>
-					<li>
-						<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=reels');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=reels">
-                            <span class="split-link"><svg width="24" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6.99988H21.5M16.3 2.49988L19 6.99988M10.5 1.99988L13.5 6.99988M5.5 2.49988L8 6.99988M7.5 16.9999C7.5 17.276 7.27614 17.4999 7 17.4999C6.72386 17.4999 6.5 17.276 6.5 16.9999M7.5 16.9999C7.5 16.7237 7.27614 16.4999 7 16.4999C6.72386 16.4999 6.5 16.7237 6.5 16.9999M7.5 16.9999H6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><rect x="2" y="2" width="20" height="20" rx="5" class="icon_main" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></rect></svg></span>
-							<span><?php echo $wo['lang']['reels'];?></span>
-						</a>
-					</li>
-                    <?php } ?>
+
 				</ul>
 			</div>
 		<?php } ?>
